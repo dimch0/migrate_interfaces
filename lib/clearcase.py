@@ -2,7 +2,6 @@ import os
 import re
 import subprocess
 
-#              FUNCTIONS              #
 
 def execute_cmd(cmd, view_name=False):
     """
@@ -37,4 +36,10 @@ def execute_cmd(cmd, view_name=False):
     if result['exit_code'] not in [0, 141]:
         print "Command execution failed with exit code: %s \n" % result['exit_code']
 
+    return result
+
+
+def checkout(fpath):
+    cmd = "cleartool checkout #{0}".format(fpath)
+    result = execute_cmd(cmd)
     return result
